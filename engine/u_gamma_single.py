@@ -1,6 +1,6 @@
 import json
 import logging
-import random
+import secrets
 import time
 from datetime import datetime
 
@@ -13,8 +13,9 @@ class UGammaSingle:
     def pulse(self):
         timestamp = datetime.now().isoformat()
         self.state["last_pulse"] = timestamp
-        # Logic to simulate cognitive load and GSRI fluctuations
-        risk_delta = random.uniform(-2.0, 2.5)
+        # Use secrets for cryptographically strong random delta
+        # secrets.SystemRandom().uniform(-2.0, 2.5)
+        risk_delta = secrets.SystemRandom().uniform(-2.0, 2.5)
         return {"timestamp": timestamp, "risk_delta": risk_delta}
 
     def register_contract(self, contract):
