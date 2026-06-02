@@ -1,0 +1,15 @@
+{
+  "batch_id": "WORM_20260601_184319",
+  "timestamp": "2026-06-01T18:43:19.122961",
+  "data": {
+    "g_sri": 19.34,
+    "status": "GREEN",
+    "pcr_match": "TRUE",
+    "pulse": {
+      "timestamp": "2026-06-01T18:43:19.122853",
+      "risk_delta": 1.9007606689334824
+    }
+  },
+  "prev_hash": "027981fbdcce70a4acb3ca7389d6eb712ae69935b1c546e817453a5ba7ec25ec74a64fc7f74a5a8255af49d2f712950cccba835b6f1ad2b4050d7e7d7bec52e7",
+  "hash": "bfcb9bb803de9638cda30e3ee99269266513f91046b3832491997f7f935ca8d4c2bc10d76a10182b217a1377e1828a315a4993ba8e43448150d378a8bac4fc60"
+}
