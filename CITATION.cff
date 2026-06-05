@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Starstuff"
+  given-names: "One Fine"
+  affiliation: "Omni-Sentinel Governance Board"
+title: "Omni-Sentinel Cognitive Execution Environment"
+version: 1.0.0
+date-released: 2026-06-01
+url: "https://github.com/onefinestarstuff/omni-sentinel"
+abstract: >-
+  A verifiable, hardware-anchored containment and governance framework for AGI/ASI entities,
+  featuring G-SRI systemic risk scoring, PQC WORM audit trails, and cognitive pulse monitoring.
+keywords:
+  - "AGI Governance"
+  - "AI Safety"
+  - "Post-Quantum Cryptography"
+  - "Zero-Knowledge Proofs"
+  - "Systemic Risk"
+license: MIT
