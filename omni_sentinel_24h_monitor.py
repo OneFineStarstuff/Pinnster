@@ -4,6 +4,8 @@ import os
 from engine.u_gamma_single import UGammaSingle
 from engine.gsri_scoring_engine import GSRIScoringEngine
 from engine.pqc_worm_logger import PQCWORMLogger
+from engine.zk_fairness_prover import ZKFairnessProver
+from engine.asa_interpretability import ASAInterpretabilityLayer
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger("OmniSentinel")
@@ -12,6 +14,8 @@ def run_monitor():
     cognitive_engine = UGammaSingle()
     risk_engine = GSRIScoringEngine()
     audit_logger = PQCWORMLogger()
+    zk_prover = ZKFairnessProver()
+    interpretability_layer = ASAInterpretabilityLayer()
 
     logger.info("Omni-Sentinel 24h Monitoring Environment Online.")
 
@@ -29,14 +33,20 @@ def run_monitor():
             # 4. Attestation Check (Simulated)
             pcr_match = "TRUE" # PCR_MATCH=TRUE
 
+            # 5. Generate Compliance Proofs
+            zk_proof = zk_prover.generate_fairness_proof({"score": score})
+            cae_envelope = interpretability_layer.generate_cae(score, status, pulse)
+
             log_entry = {
                 "g_sri": score,
                 "status": status,
                 "pcr_match": pcr_match,
-                "pulse": pulse
+                "pulse": pulse,
+                "zk_fairness_proof": zk_proof,
+                "cae_envelope": cae_envelope
             }
 
-            # 5. Commit to WORM Audit
+            # 6. Commit to WORM Audit
             audit_file = audit_logger.log_batch(log_entry)
 
             logger.info(f"Checkpoint: G-SRI={score} | Status={status} | Audit={audit_file}")
