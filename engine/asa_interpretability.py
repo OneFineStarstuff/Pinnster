@@ -20,10 +20,15 @@ class ASAInterpretabilityLayer:
             "systemic_entropy": self.random.uniform(0.0, 0.2)
         }
 
-        # Normalize attributions to 1.0
+        # Normalize attributions to exactly 1.0
         total = sum(attributions.values())
-        for k in attributions:
-            attributions[k] = round(attributions[k] / total, 4)
+        keys = list(attributions.keys())
+        for i in range(len(keys) - 1):
+            attributions[keys[i]] = round(attributions[keys[i]] / total, 4)
+
+        # Ensure the sum is exactly 1.0 by adjusting the last key
+        current_sum = sum(attributions[k] for k in keys[:-1])
+        attributions[keys[-1]] = round(1.0 - current_sum, 4)
 
         cae_id = f"CAE_{int(datetime.now().timestamp())}_{self.random.getrandbits(32)}"
 
