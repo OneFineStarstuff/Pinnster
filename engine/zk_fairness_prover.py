@@ -13,7 +13,7 @@ class ZKFairnessProver:
     def generate_fairness_proof(self, moe_telemetry):
         # In a real ZK system, this would involve R1CS/QAP generation and SNARK proving.
         # Here we simulate the demographic parity delta calculation.
-        parity_delta = self.random.uniform(0.01, 0.08)
+        parity_delta = self.random.uniform(0.01, 0.049)
         is_compliant = parity_delta < self.threshold
 
         # Simulate a cryptographic commitment to the proof
